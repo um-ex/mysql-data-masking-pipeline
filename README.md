@@ -82,4 +82,4 @@ This process will:
 
 ## 📊 Data Masking Pipeline Flow
 
-![Pipeline Flow Diagram](assets/flow_diagram.png)  
+![Pipeline Flow Diagram](assets/flow_diagram.PNG)  
