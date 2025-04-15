@@ -35,7 +35,7 @@ Script: mask_from_lookup.sh
         - Retry logic for safety
 
 ## Directory Structure
-<pre> ```
+```
 .
 ├── run.sh                   # Master pipeline controller 
 ├── prepare_jobs.sh          # Discovers valid jobs (database|table)  
@@ -46,7 +46,7 @@ Script: mask_from_lookup.sh
 ├── lookup_data.txt          # Raw merged metadata  
 ├── lookup_data.csv          # Editable CSV format for masking  
 └── logs/                    # Logs for each step (optional)  
-```</pre>
+```
 
 ## Usage 
 ### Step 1: Setup 
@@ -82,4 +82,4 @@ This process will:
 
 ## 📊 Data Masking Pipeline Flow
 
-![Pipeline Flow Diagram] (assets/flow_diagram.png)  
+![Pipeline Flow Diagram](assets/flow_diagram.png)  
