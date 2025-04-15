@@ -35,14 +35,51 @@ Script: mask_from_lookup.sh
         - Retry logic for safety
 
 ## Directory Structure
-
+<pre> ```
 .
-├── run.sh                   # Master pipeline controller
-├── prepare_jobs.sh          # Discovers valid jobs (database|table)
-├── process_single.sh        # Extracts table metadata into lookup parts
-├── mask_from_lookup.sh      # Performs actual data masking
-├── job_list.txt             # Generated list of jobs to process
-├── lookup_parts/            # Intermediate metadata per table
-├── lookup_data.txt          # Raw merged metadata
-├── lookup_data.csv          # Editable CSV format for masking
-└── logs/                    # Logs for each step (optional)
+├── run.sh                   # Master pipeline controller 
+├── prepare_jobs.sh          # Discovers valid jobs (database|table)  
+├── process_single.sh        # Extracts table metadata into lookup parts  
+├── mask_from_lookup.sh      # Performs actual data masking  
+├── job_list.txt             # Generated list of jobs to process  
+├── lookup_parts/            # Intermediate metadata per table  
+├── lookup_data.txt          # Raw merged metadata  
+├── lookup_data.csv          # Editable CSV format for masking  
+└── logs/                    # Logs for each step (optional)  
+```</pre>
+
+## Usage 
+### Step 1: Setup 
+Ensure MySQL access is configured via ~/my.cnf or you can make .env for user credentials.
+```bash 
+[client]
+user=root
+password=your_password
+```
+### Step 2: Generate Lookup Table or skip step 2 by writing ./run.sh in mask_from_lookup.sh script 
+```bash
+chmod +x run.sh
+./run.sh
+```
+### Step 3: Run Masking
+```bash
+chmod +x run.sh
+./mask_from_lookup.sh 
+```
+This process will:
+- Identify which columns to mask
+- Generate masked data in-place in MySQL 
+
+## Notes
+- This pipeline directly modifies data in the database. Use on clones, not on production.
+- It includes retry logic for safe execution.
+- Designed to run in parallel for performance.
+
+## Dependencies 
+- bash 
+- mysql CLI
+- parallel (GNU parallel)
+
+## 📊 Data Masking Pipeline Flow
+
+![Pipeline Flow Diagram] (assets/flow_diagram.png)  
